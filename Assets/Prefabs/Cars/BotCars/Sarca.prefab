@@ -235,8 +235,7 @@ GameObject:
   - component: {fileID: 8905380279748921706}
   - component: {fileID: 6491337769963717424}
   - component: {fileID: 7943510618989276966}
-  - component: {fileID: 4498388494251242110}
-  - component: {fileID: 221007925172579794}
+  - component: {fileID: 7091372328179342759}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -309,8 +308,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4498388494251242110
-BoxCollider:
+--- !u!64 &7091372328179342759
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -325,32 +324,12 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.019197728, y: 0.007777594, z: 0.043234065}
-  m_Center: {x: -0.00008336931, y: 0.0063164383, z: 0.0016328883}
---- !u!65 &221007925172579794
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693871869363611331}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.01595999, y: 0.0045315386, z: 0.021696059}
-  m_Center: {x: 0.0000000059604637, y: 0.0124335755, z: -0.0021726862}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7671501117927629174, guid: c609758a60f3baa48b0710a1fa89c048, type: 3}
 --- !u!1 &5647212449619690717
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +580,7 @@ GameObject:
   - component: {fileID: 7273791052218124217}
   m_Layer: 0
   m_Name: Sarca
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,7 +612,7 @@ Rigidbody:
   m_GameObject: {fileID: 8139919355389420904}
   serializedVersion: 4
   m_Mass: 1080
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

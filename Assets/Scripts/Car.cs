@@ -1,21 +1,25 @@
+using System;
 using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    [SerializeField] private WheelCollider[] wheels;
-    [SerializeField] private float speed = 5f;
+    public static event Action GameOver;
 
-    private float horizontalInput;
-    private void Awake()
-    {
-       
-    }
+    [SerializeField] private WheelCollider[] wheels;
+    [SerializeField] public float speed = 5f;
+
     void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
         if (IsOnGround())
         {
-            transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * speed);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * speed);
+            }
         }
     }
 
@@ -30,5 +34,13 @@ public class Car : MonoBehaviour
             }
         }
         return wheelsOnGround == 4 ? true : false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bot"))
+        {
+            GameOver?.Invoke();
+        }
     }
 }

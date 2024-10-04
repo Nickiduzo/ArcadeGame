@@ -19,10 +19,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnVechicleCoroutine()
     {
-        if (cars.Count < 25)
-        {
-            SpawnProcess();
-        }
+        SpawnProcess();
     }
 
     private void SpawnProcess()
@@ -31,14 +28,16 @@ public class Spawner : MonoBehaviour
         {
             var newVechicle = Instantiate(GetRandomVechicle(), rightSpawner.position, transform.rotation);
             newVechicle.transform.position = new Vector3(rightSpawner.position.x, 0, RightPointRand());
-            cars.Add(newVechicle);
+            newVechicle.transform.SetParent(rightSpawner);
+            //cars.Add(newVechicle);
         }
         else
         {
             var newVechicle = Instantiate(GetRandomVechicle(), leftSpawner.position, transform.rotation);
             newVechicle.transform.Rotate(0, 180, 0);
             newVechicle.transform.position = new Vector3(leftSpawner.position.x, 0, LeftPointRand());
-            cars.Add(newVechicle);
+            newVechicle.transform.SetParent(leftSpawner);
+            //cars.Add(newVechicle);
         }
     }
     private float RightPointRand()
@@ -58,6 +57,6 @@ public class Spawner : MonoBehaviour
 
     private GameObject GetRandomVechicle()
     {
-        return prefabs[prefabs.Length - 1];
+        return prefabs[Random.Range(0,prefabs.Length - 1)];
     }
 }

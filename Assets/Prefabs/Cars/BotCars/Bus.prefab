@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 6969662796932936071}
   m_Layer: 0
   m_Name: Bus
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,7 +423,7 @@ Rigidbody:
   m_GameObject: {fileID: 3959792942091167695}
   serializedVersion: 4
   m_Mass: 5600
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -689,8 +689,7 @@ GameObject:
   - component: {fileID: 8554611601766989812}
   - component: {fileID: 6096519215845775126}
   - component: {fileID: 2663316076555983529}
-  - component: {fileID: 6223256110699590543}
-  - component: {fileID: 7712198155745084679}
+  - component: {fileID: 5328712384287736492}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -763,8 +762,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6223256110699590543
-BoxCollider:
+--- !u!64 &5328712384287736492
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -779,32 +778,12 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.025229925, y: 0.013947372, z: 0.07235681}
-  m_Center: {x: 0, y: 0.02087377, z: -0.002178278}
---- !u!65 &7712198155745084679
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5561235407209968451}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.026028346, y: 0.010663604, z: 0.07436326}
-  m_Center: {x: 0, y: 0.008668155, z: -0.0011811006}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4510274538456433033, guid: 80ec9d4b1fe521f4d92830bd743a27d5, type: 3}
 --- !u!1 &6156467389374304651
 GameObject:
   m_ObjectHideFlags: 0

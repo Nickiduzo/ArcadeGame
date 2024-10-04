@@ -452,9 +452,7 @@ GameObject:
   - component: {fileID: 2974344305710826421}
   - component: {fileID: 776082668237380397}
   - component: {fileID: 3642019276550223091}
-  - component: {fileID: 8689775983039810618}
-  - component: {fileID: 4379479276532560757}
-  - component: {fileID: 7530944289619260952}
+  - component: {fileID: 6340734878726141175}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -527,8 +525,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8689775983039810618
-BoxCollider:
+--- !u!64 &6340734878726141175
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -543,53 +541,12 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.492178, y: 0.6194527, z: 7.704783}
-  m_Center: {x: 0, y: 0.89583254, z: -0.63194394}
---- !u!65 &4379479276532560757
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5029772921184275020}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2271507, y: 1.8503599, z: 2.104714}
-  m_Center: {x: 0, y: 2.12849, z: 2.0215614}
---- !u!65 &7530944289619260952
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5029772921184275020}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.82639444, y: 0.28258085, z: 0.8480978}
-  m_Center: {x: 0, y: 1.3508384, z: -2.7272472}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8467973019869391972, guid: 99286866f8c285b45a392bf9e5b35bd7, type: 3}
 --- !u!1 &5859607692685785460
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +951,7 @@ GameObject:
   - component: {fileID: 1997273591630722815}
   m_Layer: 0
   m_Name: Truck
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

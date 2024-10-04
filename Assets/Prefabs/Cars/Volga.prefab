@@ -604,7 +604,7 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
@@ -667,7 +667,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
+  m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -686,14 +686,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bddd2fdbef59d84cb086c60ea701a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  horsePower: 30
   wheels:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  centerOfMass: {fileID: 327928007089321479}
+  speed: 5
 --- !u!1 &6868161552613850736
 GameObject:
   m_ObjectHideFlags: 0
