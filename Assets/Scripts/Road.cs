@@ -3,75 +3,97 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    private List<Transform> roads = new List<Transform>();
-    [SerializeField] private List<GameObject> prefabs;
-
     [SerializeField] private Car car;
+    [SerializeField] private GameObject[] roadPrefab;
+    
+    [SerializeField] private float speed = 20;
+    private float maxSpeed = 100f;
+    private float minSpeed = 20f;
+    
+    [SerializeField] private int amountOfRoads;
 
-    [SerializeField] private int countOfRoads;
-    [SerializeField] private float speed;
-    [SerializeField] private float deleteRoadOffSetZ;
+    [SerializeField] private float valueOfSpeed;
 
-    private Transform deleteRoadPoint;
+    [SerializeField] private Transform endPoint;
 
-    [SerializeField] private float offsetPosZ;
+    private float zPosSpawner = 66.5f;
+    private List<GameObject> roads = new List<GameObject>();
 
     private void Start()
     {
-        for (int i = 0; i < countOfRoads; i++)
-            SpawnNextRoad();
-
-        deleteRoadPoint = roads[0].transform;
+        RoadInitialization();
     }
 
     private void Update()
     {
-        speed = car.speed;
-        AvaibleMoving();
-    }
-
-    private void SpawnNextRoad()
-    {
-        Vector3 spawnPos = new Vector3(0,0,0);
-        if (roads.Count != 0)
+        if (Input.GetAxis("Vertical") > 0 && speed < maxSpeed)
         {
-            spawnPos = new Vector3(0, 0, offsetPosZ * (roads.Count - 1));
+            speed += Time.deltaTime * 10;
+        }
+        else if(speed > minSpeed)
+        {
+            speed -= Time.deltaTime * 10;
         }
 
-        var newRoad = SpawnRandomPlatfrom(spawnPos);
-        
-        roads.Add(newRoad);
-        newRoad.SetParent(transform);
+        GenerateMove();
     }
 
-    private void AvaibleMoving()
+    private void RoadInitialization()
     {
-        MovePlatforms();
-        DeletePlatform();
-    }
-
-    private void MovePlatforms()
-    {
-        roads.ForEach(r => r.transform.Translate(Vector3.forward * Time.deltaTime * -speed));
-    }
-
-    private void DeletePlatform()
-    {
-        if (deleteRoadPoint.position.z + deleteRoadOffSetZ < transform.position.z)
+        for(int i = 0; i < amountOfRoads;i++)
         {
-            Destroy(roads[0].gameObject);
-            roads.RemoveAt(0);
-
-            SpawnNextRoad();
-            deleteRoadPoint = roads[0].transform;
+            SpawnRoad();
         }
     }
-    private Transform SpawnRandomPlatfrom(Vector3 position)
+
+    private void SpawnRoad()
     {
-       return Instantiate(GetRandomPrefab(),position, transform.rotation).transform;
+        if (roads.Count == 0)
+        {
+            GameObject newRoad = Instantiate(GetRandomRoad(),transform.position,transform.rotation);
+            roads.Add(newRoad);
+        }
+        else
+        {
+            GameObject newRoad = Instantiate(GetRandomRoad(),GetPosition(), transform.rotation);
+            roads.Add(newRoad);
+        }
     }
-    private GameObject GetRandomPrefab()
+    
+    private void GenerateMove()
     {
-        return prefabs[Random.Range(0, prefabs.Count - 1)];
+        MoveRoad();
+        DeleteRoad();
+    }
+    private void MoveRoad()
+    {
+        foreach (GameObject road in roads)
+        {
+            road.transform.Translate(Vector3.back * Time.deltaTime * speed);
+        }
+    }
+
+    private void DeleteRoad()
+    {
+        foreach(GameObject road in roads)
+        {
+            if (road.transform.position.z <= endPoint.position.z)
+            {
+                Destroy(road);
+                roads.Remove(road);
+                SpawnRoad();
+                break;
+            }
+        }
+
+    }
+
+    private Vector3 GetPosition()
+    {
+        return new Vector3(roads[roads.Count - 1].transform.position.x, roads[roads.Count - 1].transform.position.y, roads[roads.Count - 1].transform.position.z + zPosSpawner);
+    }
+    private GameObject GetRandomRoad()
+    {
+        return roadPrefab[Random.Range(0, roadPrefab.Length)];
     }
 }
