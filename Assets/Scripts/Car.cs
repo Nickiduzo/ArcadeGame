@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
     [SerializeField] private float horsePower = 30.0f;
     [SerializeField] private WheelCollider[] wheels;
     [SerializeField] private GameObject centerOfMass;
