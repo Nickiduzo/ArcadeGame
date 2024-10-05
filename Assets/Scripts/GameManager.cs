@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Car.GameOver += SetGameOver;
+        AudioManager.instance.Play("Music");
     }
 
     private void SetGameOver()

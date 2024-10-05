@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Bot
+  - Ground
   layers:
   - Default
   - TransparentFX

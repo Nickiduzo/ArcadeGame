@@ -10,8 +10,6 @@ public class Spawner : MonoBehaviour
 
     private float startDelay = 3f;
     private float delay = 2.5f;
-
-    private List<GameObject> cars = new List<GameObject>();
     private void Start()
     {
         InvokeRepeating("SpawnVechicleCoroutine",startDelay,delay);
@@ -29,7 +27,6 @@ public class Spawner : MonoBehaviour
             var newVechicle = Instantiate(GetRandomVechicle(), rightSpawner.position, transform.rotation);
             newVechicle.transform.position = new Vector3(rightSpawner.position.x, 0, RightPointRand());
             newVechicle.transform.SetParent(rightSpawner);
-            //cars.Add(newVechicle);
         }
         else
         {
@@ -37,7 +34,6 @@ public class Spawner : MonoBehaviour
             newVechicle.transform.Rotate(0, 180, 0);
             newVechicle.transform.position = new Vector3(leftSpawner.position.x, 0, LeftPointRand());
             newVechicle.transform.SetParent(leftSpawner);
-            //cars.Add(newVechicle);
         }
     }
     private float RightPointRand()

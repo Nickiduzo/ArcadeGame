@@ -7,8 +7,6 @@ public class Road : MonoBehaviour
     [SerializeField] private GameObject[] roadPrefab;
     
     [SerializeField] private float speed = 20;
-    private float maxSpeed = 100f;
-    private float minSpeed = 20f;
     
     [SerializeField] private int amountOfRoads;
 
@@ -26,14 +24,7 @@ public class Road : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetAxis("Vertical") > 0 && speed < maxSpeed)
-        {
-            speed += Time.deltaTime * 10;
-        }
-        else if(speed > minSpeed)
-        {
-            speed -= Time.deltaTime * 10;
-        }
+        speed = car.speed;
 
         GenerateMove();
     }
@@ -51,11 +42,13 @@ public class Road : MonoBehaviour
         if (roads.Count == 0)
         {
             GameObject newRoad = Instantiate(GetRandomRoad(),transform.position,transform.rotation);
+            newRoad.transform.SetParent(transform);
             roads.Add(newRoad);
         }
         else
         {
             GameObject newRoad = Instantiate(GetRandomRoad(),GetPosition(), transform.rotation);
+            newRoad.transform.SetParent(transform);
             roads.Add(newRoad);
         }
     }
