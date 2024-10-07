@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
             Destroy(instance);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         Initialization();
     }
 
@@ -58,5 +58,11 @@ public class AudioManager : MonoBehaviour
                 break;
             }
         }
+    }
+    
+    public void StopAll()
+    {
+        foreach (Sound s in sounds)
+            s.source.Stop();
     }
 }

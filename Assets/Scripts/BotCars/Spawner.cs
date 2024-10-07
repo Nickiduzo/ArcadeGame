@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabs;
-
     [SerializeField] private Transform leftSpawner;
     [SerializeField] private Transform rightSpawner;
 
@@ -12,47 +10,44 @@ public class Spawner : MonoBehaviour
     private float delay = 2.5f;
     private void Start()
     {
-        InvokeRepeating("SpawnVechicleCoroutine",startDelay,delay);
-    }
-
-    private void SpawnVechicleCoroutine()
-    {
-        SpawnProcess();
+        InvokeRepeating("SpawnProcess", startDelay,delay);
     }
 
     private void SpawnProcess()
     {
         if (RandomDirection() == 1)
         {
-            var newVechicle = Instantiate(GetRandomVechicle(), rightSpawner.position, transform.rotation);
-            newVechicle.transform.position = new Vector3(rightSpawner.position.x, 0, RightPointRand());
+            var newVechicle = Instantiate(GetRandomVechicle(), GetRightPosition(), Quaternion.identity);
             newVechicle.transform.SetParent(rightSpawner);
         }
         else
         {
-            var newVechicle = Instantiate(GetRandomVechicle(), leftSpawner.position, transform.rotation);
-            newVechicle.transform.Rotate(0, 180, 0);
-            newVechicle.transform.position = new Vector3(leftSpawner.position.x, 0, LeftPointRand());
+            var newVechicle = Instantiate(GetRandomVechicle(), GetLeftPosition(), Quaternion.Euler(0,180,0));
             newVechicle.transform.SetParent(leftSpawner);
         }
     }
-    private float RightPointRand()
+    private Vector3 GetRightPosition()
     {
-        return Random.Range(rightSpawner.transform.position.z, rightSpawner.transform.position.z + 25);
+        float xPos = Random.Range(1.18f, 3f);
+        float yPos = rightSpawner.transform.position.y;
+        float zPos = Random.Range(rightSpawner.transform.position.z -15f, rightSpawner.transform.position.z + 25f);
+        return new Vector3(xPos, yPos, zPos);
     }
 
-    private float LeftPointRand()
+    private Vector3 GetLeftPosition()
     {
-        return Random.Range(leftSpawner.transform.position.z, rightSpawner.transform.position.z + 25);
+        float xPos = Random.Range(-3f, -1.18f);
+        float yPos = leftSpawner.transform.position.y;
+        float zPos = Random.Range(leftSpawner.transform.position.z, leftSpawner.transform.position.z + 25f);
+        return new Vector3(xPos, yPos, zPos);
     }
 
     private int RandomDirection()
     {
         return Random.Range(0, 2);
     }
-
     private GameObject GetRandomVechicle()
     {
-        return prefabs[Random.Range(0,prefabs.Length - 1)];
+        return prefabs[Random.Range(0,prefabs.Length)];
     }
 }
